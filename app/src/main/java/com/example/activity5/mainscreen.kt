@@ -1,8 +1,10 @@
 package com.example.activity5
 
 import android.inputmethodservice.Keyboard.Row
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -34,7 +36,7 @@ fun Mainclass(
     var nohp by remember { mutableStateOf("") }
     var selectedgender by remember { mutableStateOf("") }
 
-    val jnsKelamin = listOf("laki-laki", "perempuan")
+    val jenisKelamin = listOf("laki-laki", "perempuan")
 
     var username by rememberSaveable { mutableStateOf("") }
     var useremail by remember { mutableStateOf("") }
@@ -56,7 +58,7 @@ fun Mainclass(
                 .fillMaxWidth()
                 .padding(5.dp))
         Row (){
-            jnsKelamin.forEach { item ->
+            jenisKelamin.forEach { item ->
                 Row (verticalAlignment = Alignment.CenterVertically){ RadioButton(
                     selected = selectedgender == item,
                     onClick = {
@@ -114,4 +116,20 @@ fun Mainclass(
     }
 }
 @Composable
-fun 
+fun CardSection(Judul:String, IsiJudul:String){
+    Column (horizontalAlignment = Alignment.Start){
+
+        Spacer(modifier = Modifier.padding(5.dp))
+        Row (
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(text = Judul, modifier = Modifier.weight(0.8f))
+            Text(text = ":", modifier = Modifier.weight(0.2f))
+            Text(
+                text = IsiJudul,
+                modifier = Modifier.weight(2f)
+            )
+        }
+    }
+}
